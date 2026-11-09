@@ -33,7 +33,7 @@ export default function Contact() {
               <div className="info-row-icon">&#9993;</div>
               <div>
                 <strong>Email</strong>
-                <a href="mailto:info@ottunar.com">mvishnu4711@gmail.com</a>
+                <a href="mailto:mvishnu471@gmail.com">mvishnu471@gmail.com</a>
               </div>
             </div>
             <div className="info-row">
