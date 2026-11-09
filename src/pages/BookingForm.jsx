@@ -9,8 +9,8 @@ export default function BookingForm() {
   const [form, setForm] = useState({
     fullName: '', mobile: '', whatsapp: '', email: '',
     pickup: '', drop: '', pickupDate: '', pickupTime: '',
-    tripType: '', passengers: '', vehicleType: '', vehicleModel: '',
-    vehicleReg: '', transmission: [], driverRequired: '', returnDate: '', returnTime: '',
+    tripType: '', vehicleType: '', vehicleModel: '',
+    transmission: [], driverRequired: '', returnDate: '', returnTime: '',
     notes: '',
   });
 
@@ -164,10 +164,6 @@ export default function BookingForm() {
               </div>
             )}
 
-            <div className="form-group">
-              <label>Number of Passengers <span className="req">*</span></label>
-              <input type="number" name="passengers" value={form.passengers} onChange={handleChange} required placeholder="e.g. 3" min="1" max="10" />
-            </div>
 
             {/* Section 3 */}
             <div className="form-section-label">
@@ -198,15 +194,9 @@ export default function BookingForm() {
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>Vehicle Model</label>
-                <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} placeholder="e.g. Maruti Swift" />
-              </div>
-              <div className="form-group">
-                <label>Vehicle Registration Number <span className="req">*</span></label>
-                <input type="text" name="vehicleReg" value={form.vehicleReg} onChange={handleChange} required placeholder="e.g. TN01AB1234" />
-              </div>
+            <div className="form-group">
+              <label>Vehicle Model</label>
+              <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} placeholder="e.g. Maruti Swift" />
             </div>
 
             {/* Section 4 */}
