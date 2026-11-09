@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+.vercel
+.git
+*.log
+*.local
+.env*
+dev_server.txt
+vite_output.txt
+apps-script
+scripts
