@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import logoImg from '../assets/logo.png';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <img src="/ottunar-tamil-logo.png" alt="ஓட்டுநர்" className="footer-logo-img" />
+          <img src={logoImg} alt="Ottunar" className="footer-logo-img" />
           <p>Verified professional drivers, available around the clock. Airport transfers, outstation trips, daily commutes, and night drives across India.</p>
         </div>
         <div className="footer-col">
@@ -35,7 +36,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>&copy; {new Date().getFullYear()} Ottunar</span>
+        <span>&copy; {new Date().getFullYear()} Ottuner</span>
         <span>Verified drivers. Real trust.</span>
       </div>
     </footer>

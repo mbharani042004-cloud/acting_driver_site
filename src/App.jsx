@@ -20,6 +20,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/agency-form" element={<AgencyForm />} />
           <Route path="/booking-form" element={<BookingForm />} />
+          <Route path="/book-driver" element={<BookingForm />} />
+          <Route path="/services" element={<Home />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/reviews" element={<Reviews />} />
         </Routes>

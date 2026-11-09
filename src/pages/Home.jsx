@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import HeroSection from '../components/HeroSection';
 import CardSpread from '../components/CardSpread';
 import CustomPack from './CustomPack';
 import FeedbackSection from '../components/FeedbackSection';
@@ -14,10 +15,8 @@ const services = [
   {
     id: 'airport',
     label: 'Airport',
-    icon: '✈️',
     title: 'Airport Transfers',
     desc: 'Punctual drivers for early morning flights and late-night arrivals. We track your flight timing and adjust pickup accordingly.',
-    image: '/service-airport.png',
     features: [
       'Flight timing aware pickup',
       'Meet & greet at arrivals',
@@ -28,10 +27,8 @@ const services = [
   {
     id: 'outstation',
     label: 'Outstation',
-    icon: '🛣️',
     title: 'Outstation Trips',
     desc: 'Intercity and long-distance travel with experienced highway drivers. Multi-day trips with overnight stay arrangements available.',
-    image: '/service-outstation.png',
     features: [
       'Highway-experienced drivers',
       'Multi-day trip support',
@@ -42,10 +39,8 @@ const services = [
   {
     id: 'daily',
     label: 'Daily',
-    icon: '🚗',
     title: 'Daily Commute',
     desc: 'Regular driver for your daily office commute or personal errands. Hire for a few hours or a full day.',
-    image: '/service-airport-v2.png',
     features: [
       'Hourly or full-day booking',
       'Consistent assigned driver',
@@ -56,10 +51,8 @@ const services = [
   {
     id: 'night',
     label: 'Night',
-    icon: '🌙',
     title: 'Night Drives',
     desc: 'Late-night driving when you are tired, unwell, or simply want to get home safe. Available past midnight.',
-    image: '/service-night.png',
     features: [
       'Available past midnight',
       'Safety-trained drivers',
@@ -95,44 +88,6 @@ const testimonials = [
     quote: 'Booked a night driver after a late dinner party. Vikram was professional, careful, and got us home safely. Will book again.',
   },
 ];
-
-function RouteSvg() {
-  return (
-    <div className="route-svg-wrap">
-      <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* White glow behind the line for contrast against car */}
-        <path
-          d="M80 310 C130 300 180 270 240 250 C300 230 370 230 440 220 L520 210"
-          stroke="white"
-          strokeWidth="8"
-          strokeLinecap="round"
-          opacity="0.5"
-          className="route-line"
-        />
-        {/* Route line */}
-        <path
-          d="M80 310 C130 300 180 270 240 250 C300 230 370 230 440 220 L520 210"
-          className="route-line"
-          strokeWidth="3.5"
-        />
-        {/* Pickup pin — near door handle, bottom-left */}
-        <g className="route-pin">
-          <circle cx="80" cy="310" r="10" fill="#000080" />
-          <circle cx="80" cy="310" r="4" fill="white" />
-          <rect x="44" y="278" width="72" height="22" rx="11" fill="white" opacity="0.9" />
-          <text x="80" y="293" textAnchor="middle" className="route-label" fill="#000080" fontWeight="600" fontSize="11">Pickup</text>
-        </g>
-        {/* Drop pin — exits frame at right edge */}
-        <g className="route-pin" style={{ animationDelay: '1.8s' }}>
-          <circle cx="440" cy="220" r="10" fill="#000080" />
-          <circle cx="440" cy="220" r="4" fill="white" />
-          <rect x="404" y="188" width="72" height="22" rx="11" fill="white" opacity="0.9" />
-          <text x="440" y="203" textAnchor="middle" className="route-label" fill="#000080" fontWeight="600" fontSize="11">Drop</text>
-        </g>
-      </svg>
-    </div>
-  );
-}
 
 function CityTicker() {
   const trackRef = useRef(null);
@@ -179,56 +134,14 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="hero">
-        <div className="hero-inner">
-          <div className="hero-text">
-            <h1>
-              A driver you can trust,<br />
-              at your door
-            </h1>
-            <p className="hero-tamil" style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 500, color: 'var(--text-muted)', marginBottom: '20px', letterSpacing: '0.5px' }}>
-              நம்பகமான ஓட்டுநர், உங்கள் வீட்டு வாசலில்
-            </p>
-            <p className="hero-desc">
-              Book a verified professional driver for airport transfers,
-              outstation trips, daily commutes, or late-night drives.
-              Thoroughly vetted. Always punctual.
-            </p>
-            <div className="hero-actions">
-              <Link to="/booking-form" className="btn btn-primary btn-lg">Book a driver</Link>
-              <Link to="/agency-form" className="btn btn-outline btn-lg">Driver register</Link>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-video-wrap">
-              <video
-                className="hero-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source src="/Taxi_driver_waving_from_car_20260920162332.mp4" type="video/mp4" />
-              </video>
-              <div className="hero-video-overlay" />
-              <div className="hero-video-route">
-                <RouteSvg />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* City Ticker */}
       <CityTicker />
 
       {/* Services */}
-      <section className="section services-section">
+      <section className="services-section" id="services">
         <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-          <div className="section-header">
-            <h2>What do you need today?</h2>
-            <p>Select a service to see details, features, and what makes it different.</p>
-          </div>
           <div className="services-tabs">
             {services.map((s) => (
               <button
@@ -236,29 +149,39 @@ export default function Home() {
                 className={`services-tab ${activeTab === s.id ? 'active' : ''}`}
                 onClick={() => setActiveTab(s.id)}
               >
-                {s.icon} {s.label}
+                {s.label}
               </button>
             ))}
           </div>
           {active && (
             <div className="service-detail">
-              <div className="service-detail-text">
-                <h3>{active.title}</h3>
-                <p>{active.desc}</p>
-                <div className="service-features">
-                  {active.features.map((f) => (
-                    <div className="service-feature" key={f}>
-                      <div className="service-feature-icon">&#10003;</div>
-                      {f}
-                    </div>
-                  ))}
+              <div className="service-detail-header">
+                <div className="service-header-info">
+                  <span className="service-category-pill">Verified Driver Service</span>
+                  <h3 className="service-title">{active.title}</h3>
+                  <p className="service-description">{active.desc}</p>
                 </div>
-                <div style={{ marginTop: '28px' }}>
-                  <Link to="/booking-form" className="btn btn-primary">Book now</Link>
+                <div className="service-header-action">
+                  <Link to="/booking-form" className="btn btn-primary btn-lg service-book-btn">
+                    <span>Book now</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
-              <div className="service-detail-visual">
-                <img src={active.image} alt={active.title} className="service-visual-img" />
+
+              <div className="service-features-grid">
+                {active.features.map((f) => (
+                  <div className="service-feature-card" key={f}>
+                    <div className="service-feature-check">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EAA428" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                    <span className="service-feature-text">{f}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -269,7 +192,7 @@ export default function Home() {
       <CustomPack />
 
       {/* Testimonials — Card Spread */}
-      <section className="section" style={{ background: 'var(--surface)' }}>
+      <section className="testimonials-spread-section" style={{ background: 'var(--surface)' }}>
         <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', textAlign: 'center' }}>
           <div className="section-header">
             <h2>What our customers say</h2>

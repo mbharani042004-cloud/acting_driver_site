@@ -51,7 +51,7 @@ export default function BookingForm() {
     try {
       const { submitBookingRequest } = await import('../services/submitToSheets');
       await submitBookingRequest(form);
-    } catch {}
+    } catch { }
     setLoading(false);
     setSubmitted(true);
   };
@@ -217,7 +217,7 @@ export default function BookingForm() {
             <div className="form-group">
               <label>Driver Required For <span className="req">*</span></label>
               <div className="radio-group">
-                {['Few Hours', 'Full Day', 'Overnight', 'Outstation'].map((r) => (
+                {['4 Hours', 'Full Day', 'Overnight', 'Outstation'].map((r) => (
                   <label key={r} className="radio-option">
                     <input type="radio" name="driverRequired" value={r} checked={form.driverRequired === r} onChange={handleChange} required />
                     {r}

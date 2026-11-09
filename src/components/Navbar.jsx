@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logoImg from '../assets/logo.png';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -18,7 +19,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="navbar-logo">
-          <img src="/ottunar-tamil-logo.png" alt="ஓட்டுநர்" className="logo-img" />
+          <img src={logoImg} alt="Ottunar" className="logo-img" />
         </Link>
         <button className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)} aria-label="Menu">
           <span /><span /><span />

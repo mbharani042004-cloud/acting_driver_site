@@ -3,7 +3,7 @@ import styles from './CustomPack.module.css';
 
 export default function CustomPack() {
   return (
-    <section className={`section ${styles.section}`} aria-labelledby="packages-title">
+    <section className={styles.section} aria-labelledby="packages-title">
       <div className={styles.inner}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>
