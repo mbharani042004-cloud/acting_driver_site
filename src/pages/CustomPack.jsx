@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PixelCard from '../components/PixelCard';
 import styles from './CustomPack.module.css';
 
 export default function CustomPack() {
@@ -15,7 +16,27 @@ export default function CustomPack() {
 
         <div className={styles.grid}>
           {/* ─── LOCAL TARIFF ─── */}
-          <article className={styles.card}>
+          <PixelCard
+            variant="yellow"
+            colors={['#EAA428', '#F6B73C', '#FDE047', '#D97706', '#FFFFFF']}
+            glowColor="#EAA428"
+            shape="square"
+            origin="center"
+            gap={6}
+            pixelSize={2.5}
+            speed={25}
+            revealDuration={600}
+            spotlight={0.5}
+            glow={0.5}
+            opacity={0.38}
+            fade={0.65}
+            trigger="hover"
+            radius={24}
+            clickPulse
+            intro
+            theme="dark"
+            className={styles.pixelCard}
+          >
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Local Tariff</h3>
@@ -62,10 +83,31 @@ export default function CustomPack() {
                 Book a driver
               </Link>
             </div>
-          </article>
+          </PixelCard>
 
           {/* ─── OUTSTATION TARIFF ─── */}
-          <article className={styles.card}>
+          <PixelCard
+            variant="yellow"
+            colors={['#EAA428', '#F6B73C', '#FDE047', '#D97706', '#FFFFFF']}
+            glowColor="#EAA428"
+            shape="square"
+            origin="center"
+            gap={6}
+            pixelSize={2.5}
+            speed={25}
+            revealDuration={600}
+            spotlight={0.5}
+            glow={0.5}
+            opacity={0.38}
+            fade={0.65}
+            trigger="hover"
+            radius={24}
+            clickPulse
+            intro
+            introDelay={180}
+            theme="dark"
+            className={styles.pixelCard}
+          >
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Outstation Tariff</h3>
@@ -121,7 +163,7 @@ export default function CustomPack() {
                 Book outstation driver
               </Link>
             </div>
-          </article>
+          </PixelCard>
         </div>
       </div>
     </section>
