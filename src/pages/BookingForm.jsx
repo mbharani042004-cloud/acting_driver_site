@@ -201,11 +201,11 @@ export default function BookingForm() {
             </div>
 
             <div className="form-group">
-              <label>Vehicle Type <span className="req">*</span></label>
+              <label>Vehicle Type</label>
               <div className="radio-group">
                 {['Hatchback', 'Sedan', 'SUV', 'Other'].map((v) => (
                   <label key={v} className="radio-option">
-                    <input type="radio" name="vehicleType" value={v} checked={form.vehicleType === v} onChange={handleChange} required />
+                    <input type="radio" name="vehicleType" value={v} checked={form.vehicleType === v} onChange={handleChange} />
                     {v}
                   </label>
                 ))}
@@ -232,8 +232,8 @@ export default function BookingForm() {
             </div>
 
             <div className="form-group">
-              <label>Vehicle Model <span className="req">*</span></label>
-              <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} required placeholder="e.g. Maruti Swift" />
+              <label>Vehicle Model</label>
+              <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} placeholder="e.g. Maruti Swift" />
             </div>
 
             {/* Section 4 */}
