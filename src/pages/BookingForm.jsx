@@ -77,6 +77,8 @@ export default function BookingForm() {
     );
   }
 
+  const isOutstation = form.tripType === 'Outstation' || form.driverRequired === 'Outstation';
+
   return (
     <div className="form-page">
       <div className="form-wrapper">
@@ -229,7 +231,22 @@ export default function BookingForm() {
 
             <div className="form-group">
               <label>Special Requirements / Notes</label>
-              <textarea name="notes" value={form.notes} onChange={handleChange} placeholder="Any special instructions, preferences, or notes for the driver..." rows="3" />
+              <textarea
+                name="notes"
+                value={form.notes}
+                onChange={handleChange}
+                placeholder={
+                  isOutstation
+                    ? 'Food, stay facility, or any special instructions for the driver...'
+                    : 'Food, stay facility (for outstation), or any special instructions for the driver...'
+                }
+                rows="3"
+              />
+              {isOutstation && (
+                <span className="field-hint" style={{ marginTop: '6px', display: 'block', color: 'var(--text-secondary)' }}>
+                  For outstation trips: please mention food and stay facility arrangements if applicable.
+                </span>
+              )}
             </div>
 
             <div className="form-actions">
