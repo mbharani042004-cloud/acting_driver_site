@@ -30,7 +30,7 @@ export default function Footer() {
           <h4>Contact</h4>
           <ul>
             <li><a href="tel:8508646426">8508646426</a></li>
-            <li>mvishnu4711@gmail.com</li>
+            <li><a href="mailto:mvishnu471@gmail.com">mvishnu471@gmail.com</a></li>
             <li>India</li>
           </ul>
         </div>
