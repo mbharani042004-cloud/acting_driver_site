@@ -151,7 +151,7 @@ export default function BookingForm() {
               </div>
             </div>
 
-            {form.tripType === 'Round Trip' && (
+            {(form.tripType === 'Round Trip' || form.tripType === 'Outstation') && (
               <div className="form-row">
                 <div className="form-group">
                   <label>Return Date</label>
