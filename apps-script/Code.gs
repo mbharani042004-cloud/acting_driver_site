@@ -29,9 +29,17 @@ var LICENCE_FOLDER = 'Ottunar Driver Licences';
  * (at the end, so existing rows keep their alignment).
  */
 var REQUIRED_HEADERS = {
-  Booking: ['transmission'],
-  Feedback: [],
-  Driver: []
+  Booking: [
+    'submittedAt', 'date', 'status', 'fullName', 'mobile', 'whatsapp', 'email',
+    'pickup', 'drop', 'pickupDate', 'pickupTime', 'tripType', 'subTripType',
+    'vehicleType', 'vehicleModel', 'transmission', 'driverRequired',
+    'otherDuration', 'returnDate', 'returnTime', 'notes'
+  ],
+  Feedback: ['submittedAt', 'date', 'name', 'phone', 'message'],
+  Driver: [
+    'submittedAt', 'date', 'status', 'fullName', 'mobile', 'email',
+    'city', 'experience', 'services', 'licence', 'licenceName', 'about'
+  ]
 };
 
 function doPost(e) {
@@ -68,11 +76,24 @@ function doPost(e) {
 
     var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
 
-    // Ensure required columns exist — appended at the end so old rows
-    // keep their alignment (they will simply show blank in new columns).
-    var missing = (REQUIRED_HEADERS[tabName] || []).filter(function (h) {
-      return headers.indexOf(h) === -1;
+    // Ensure all required and incoming keys exist in headers.
+    // Any missing column is appended at the end without altering existing columns.
+    var incomingKeys = Object.keys(data).filter(function (k) {
+      return k !== 'sheet';
     });
+    var expected = (REQUIRED_HEADERS[tabName] || []).concat(incomingKeys);
+    var missing = [];
+
+    expected.forEach(function (k) {
+      var cleanK = String(k).toLowerCase().replace(/[^a-z0-9]/g, '');
+      var exists = headers.some(function (h) {
+        return String(h).toLowerCase().replace(/[^a-z0-9]/g, '') === cleanK;
+      });
+      if (!exists && missing.indexOf(k) === -1) {
+        missing.push(k);
+      }
+    });
+
     if (missing.length) {
       sheet
         .getRange(1, sheet.getLastColumn() + 1, 1, missing.length)
@@ -80,8 +101,20 @@ function doPost(e) {
       headers = headers.concat(missing);
     }
 
+    // Smart lookup: matches exact key or case/format-insensitive key
+    function getVal(key) {
+      if (data[key] !== undefined && data[key] !== null) return data[key];
+      var cleanKey = String(key).toLowerCase().replace(/[^a-z0-9]/g, '');
+      for (var d in data) {
+        if (d.toLowerCase().replace(/[^a-z0-9]/g, '') === cleanKey) {
+          return data[d];
+        }
+      }
+      return '';
+    }
+
     var values = headers.map(function (h) {
-      return toCell(data[h]);
+      return toCell(getVal(h));
     });
 
     sheet.appendRow(values);

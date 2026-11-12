@@ -284,3 +284,4 @@ const SpotlightCard = ({
 };
 
 export default SpotlightCard;
+

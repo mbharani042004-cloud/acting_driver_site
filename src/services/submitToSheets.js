@@ -39,12 +39,26 @@ export async function submitBookingRequest(data) {
     : data.tripType;
 
   return postToSheet('Booking', {
-    ...data,
-    tripType: tripTypeValue,
-    driverRequired: driverRequiredValue,
-    transmission: Array.isArray(data.transmission) ? data.transmission.join(', ') : data.transmission,
     date: new Date().toLocaleDateString('en-IN'),
     status: 'Pending',
+    fullName: data.fullName || '',
+    mobile: data.mobile || '',
+    whatsapp: data.whatsapp || '',
+    email: data.email || '',
+    pickup: data.pickup || '',
+    drop: data.drop || '',
+    pickupDate: data.pickupDate || '',
+    pickupTime: data.pickupTime || '',
+    tripType: tripTypeValue,
+    subTripType: data.subTripType || '',
+    vehicleType: data.vehicleType || '',
+    vehicleModel: data.vehicleModel || '',
+    transmission: Array.isArray(data.transmission) ? data.transmission.join(', ') : (data.transmission || ''),
+    driverRequired: driverRequiredValue || '',
+    otherDuration: data.otherDuration || '',
+    returnDate: data.returnDate || '',
+    returnTime: data.returnTime || '',
+    notes: data.notes || '',
   });
 }
 

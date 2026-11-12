@@ -31,7 +31,7 @@ export default function CustomPack() {
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Local Tariff</h3>
-                <p className={styles.cardTag}>City travel</p>
+
               </div>
             </div>
 
@@ -92,7 +92,7 @@ export default function CustomPack() {
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Outstation Tariff</h3>
-                <p className={styles.cardTag}>Same-day return</p>
+
               </div>
             </div>
 
@@ -116,8 +116,26 @@ export default function CustomPack() {
             <ul className={styles.list}>
               <li className={`${styles.row} ${styles.rowAccent}`}>
                 <span className={styles.rowBody}>
+                  <span className={styles.rowLabel}>Above 300 KM</span>
+                  <span className={styles.rowMeta}>Outstation per day, food/stay - customer</span>
+                </span>
+                <span className={styles.rowValue}>
+                  ₹1,600 <span className={styles.unit}>/ Day</span>
+                </span>
+              </li>
+              <li className={`${styles.row} ${styles.rowAccent}`}>
+                <span className={styles.rowBody}>
+                  <span className={styles.rowLabel}>Above 400 KM</span>
+                  <span className={styles.rowMeta}>Outstation per day, food/stay - customer</span>
+                </span>
+                <span className={styles.rowValue}>
+                  ₹1,700 <span className={styles.unit}>/ Day</span>
+                </span>
+              </li>
+              <li className={`${styles.row} ${styles.rowAccent}`}>
+                <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Above 500 KM</span>
-                  <span className={styles.rowMeta}>Outstation per day</span>
+                  <span className={styles.rowMeta}>Outstation per day, food/stay - customer</span>
                 </span>
                 <span className={styles.rowValue}>
                   ₹1,800 <span className={styles.unit}>/ Day</span>
@@ -126,10 +144,10 @@ export default function CustomPack() {
               <li className={`${styles.row} ${styles.rowAccent}`}>
                 <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Above 600 KM</span>
-                  <span className={styles.rowMeta}>Outstation per day</span>
+                  <span className={styles.rowMeta}>Outstation per day, food/stay - customer</span>
                 </span>
                 <span className={styles.rowValue}>
-                  ₹2,000 <span className={styles.unit}>/ Day</span>
+                  ₹1,900 <span className={styles.unit}>/ Day</span>
                 </span>
               </li>
             </ul>
