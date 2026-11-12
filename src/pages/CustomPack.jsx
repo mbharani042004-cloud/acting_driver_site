@@ -11,9 +11,6 @@ export default function CustomPack() {
             Pricing
           </span>
           <h2 id="packages-title" className={styles.title}>Driver Packages</h2>
-          <p className={styles.subtitle}>
-            Transparent pricing for local trips and outstation journeys.
-          </p>
         </header>
 
         <div className={styles.grid}>
