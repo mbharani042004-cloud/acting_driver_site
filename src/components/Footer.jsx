@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <img src={logoImg} alt="Ottunar" className="footer-logo-img" />
+          <img src={logoImg} alt="Ottuner" className="footer-logo-img" />
           <p>Verified professional drivers, available around the clock. Airport transfers, outstation trips, daily commutes, and night drives across India.</p>
         </div>
         <div className="footer-col">

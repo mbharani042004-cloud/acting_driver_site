@@ -19,7 +19,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="navbar-logo">
-          <img src={logoImg} alt="Ottunar" className="logo-img" />
+          <img src={logoImg} alt="Ottuner" className="logo-img" />
         </Link>
         <button className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)} aria-label="Menu">
           <span /><span /><span />

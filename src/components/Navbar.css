@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 76px;
 }
 .navbar-logo {
   display: flex;
@@ -28,7 +28,11 @@
   transition: transform 0.2s ease;
 }
 .navbar-logo:hover { transform: scale(1.03); }
-.logo-img { height: 42px; width: auto; }
+.logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
 
 /* Nav links */
 .nav-links {
@@ -121,7 +125,7 @@
   .nav-links {
     display: none;
     position: absolute;
-    top: 68px;
+    top: 76px;
     left: 0;
     right: 0;
     background: var(--paper);

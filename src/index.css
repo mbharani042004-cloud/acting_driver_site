@@ -694,7 +694,7 @@ input, select, textarea { font-family: inherit; font-size: 0.95rem; }
   margin-bottom: 36px;
 }
 .footer-brand {}
-.footer-logo-img { height: 44px; width: auto; margin-bottom: 14px; }
+.footer-logo-img { height: 60px; width: auto; margin-bottom: 16px; object-fit: contain; }
 .footer-brand p { font-size: 0.88rem; line-height: 1.8; max-width: 280px; }
 .footer-col h4 {
   color: #EAA428;
