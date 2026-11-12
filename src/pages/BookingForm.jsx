@@ -82,7 +82,6 @@ export default function BookingForm() {
       <div className="form-wrapper">
         <div className="form-card">
           <div className="form-header">
-            <div className="form-header-icon">&#128663;</div>
             <h1>Book a Driver</h1>
             <p>Fill in your journey details and we will match you with the perfect driver</p>
           </div>

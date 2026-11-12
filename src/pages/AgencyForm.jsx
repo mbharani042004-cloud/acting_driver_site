@@ -59,7 +59,6 @@ export default function AgencyForm() {
       <div className="form-wrapper">
         <div className="form-card">
           <div className="form-header">
-            <div className="form-header-icon">&#128663;</div>
             <h1>Driver Registration</h1>
             <p>Join Ottunar as a verified professional driver</p>
           </div>

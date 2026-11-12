@@ -17,7 +17,6 @@ export default function CustomPack() {
           {/* ─── LOCAL TARIFF ─── */}
           <article className={styles.card}>
             <div className={styles.cardHeader}>
-              <span className={styles.iconBox} aria-hidden="true">🚗</span>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Local Tariff</h3>
                 <p className={styles.cardTag}>City travel</p>
@@ -31,7 +30,6 @@ export default function CustomPack() {
 
             <ul className={styles.list}>
               <li className={styles.row}>
-                <span className={styles.rowIcon} aria-hidden="true">🕒</span>
                 <span className={styles.rowLabel}>Additional Hour</span>
                 <span className={styles.rowValue}>₹100</span>
               </li>
@@ -40,7 +38,6 @@ export default function CustomPack() {
             <h4 className={styles.groupLabel}>Applicable Charges</h4>
             <ul className={styles.list}>
               <li className={styles.row}>
-                <span className={styles.rowIcon} aria-hidden="true">🌙</span>
                 <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Night Charge</span>
                   <span className={styles.rowMeta}>After 10:15 PM</span>
@@ -48,7 +45,6 @@ export default function CustomPack() {
                 <span className={styles.rowValue}>₹100</span>
               </li>
               <li className={styles.row}>
-                <span className={styles.rowIcon} aria-hidden="true">🌅</span>
                 <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Early Morning Charge</span>
                   <span className={styles.rowMeta}>Before 5:30 AM</span>
@@ -71,7 +67,6 @@ export default function CustomPack() {
           {/* ─── OUTSTATION TARIFF ─── */}
           <article className={styles.card}>
             <div className={styles.cardHeader}>
-              <span className={styles.iconBox} aria-hidden="true">🛣️</span>
               <div className={styles.cardHeading}>
                 <h3 className={styles.badge}>Outstation Tariff</h3>
                 <p className={styles.cardTag}>Same-day return</p>
@@ -85,12 +80,10 @@ export default function CustomPack() {
 
             <ul className={styles.list}>
               <li className={styles.row}>
-                <span className={styles.rowIcon} aria-hidden="true">🕒</span>
                 <span className={styles.rowLabel}>Additional Hour</span>
                 <span className={styles.rowValue}>₹100</span>
               </li>
               <li className={styles.row}>
-                <span className={styles.rowIcon} aria-hidden="true">🍱</span>
                 <span className={styles.rowLabel}>Food</span>
                 <span className={styles.rowValue}>Customer</span>
               </li>
@@ -99,7 +92,6 @@ export default function CustomPack() {
             <h4 className={styles.groupLabel}>Distance-Based — Per Day</h4>
             <ul className={styles.list}>
               <li className={`${styles.row} ${styles.rowAccent}`}>
-                <span className={styles.rowIcon} aria-hidden="true">📍</span>
                 <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Above 500 KM</span>
                   <span className={styles.rowMeta}>Outstation per day</span>
@@ -109,7 +101,6 @@ export default function CustomPack() {
                 </span>
               </li>
               <li className={`${styles.row} ${styles.rowAccent}`}>
-                <span className={styles.rowIcon} aria-hidden="true">📍</span>
                 <span className={styles.rowBody}>
                   <span className={styles.rowLabel}>Above 600 KM</span>
                   <span className={styles.rowMeta}>Outstation per day</span>
