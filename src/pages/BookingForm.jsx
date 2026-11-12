@@ -9,7 +9,7 @@ export default function BookingForm() {
   const [form, setForm] = useState({
     fullName: '', mobile: '', whatsapp: '', email: '',
     pickup: '', drop: '', pickupDate: '', pickupTime: '',
-    tripType: '', vehicleType: '', vehicleModel: '',
+    tripType: '', foodFacility: '', stayFacility: '', vehicleType: '', vehicleModel: '',
     transmission: [], driverRequired: '', returnDate: '', returnTime: '',
     notes: '',
   });
@@ -76,8 +76,6 @@ export default function BookingForm() {
       </div>
     );
   }
-
-  const isOutstation = form.tripType === 'Outstation' || form.driverRequired === 'Outstation';
 
   return (
     <div className="form-page">
@@ -170,6 +168,33 @@ export default function BookingForm() {
               </div>
             )}
 
+            {form.tripType === 'Outstation' && (
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Food Facility <span className="req">*</span></label>
+                  <input
+                    type="text"
+                    name="foodFacility"
+                    value={form.foodFacility}
+                    onChange={handleChange}
+                    required
+                    placeholder="e.g. Provided by customer / Allowance"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Stay Facility <span className="req">*</span></label>
+                  <input
+                    type="text"
+                    name="stayFacility"
+                    value={form.stayFacility}
+                    onChange={handleChange}
+                    required
+                    placeholder="e.g. Hotel provided / Room arranged / Not applicable"
+                  />
+                </div>
+              </div>
+            )}
+
 
             {/* Section 3 */}
             <div className="form-section-label">
@@ -235,18 +260,9 @@ export default function BookingForm() {
                 name="notes"
                 value={form.notes}
                 onChange={handleChange}
-                placeholder={
-                  isOutstation
-                    ? 'Food, stay facility, or any special instructions for the driver...'
-                    : 'Food, stay facility (for outstation), or any special instructions for the driver...'
-                }
+                placeholder="Any special instructions, preferences, or notes for the driver..."
                 rows="3"
               />
-              {isOutstation && (
-                <span className="field-hint" style={{ marginTop: '6px', display: 'block', color: 'var(--text-secondary)' }}>
-                  For outstation trips: please mention food and stay facility arrangements if applicable.
-                </span>
-              )}
             </div>
 
             <div className="form-actions">
