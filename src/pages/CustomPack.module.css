@@ -71,6 +71,10 @@
   height: 100%;
 }
 
+.pixelCard .cardFooter {
+  margin-top: auto;
+}
+
 .pixelCard[data-theme='dark'] {
   --text: #F8FAFC;
   --text-muted: #94A3B8;

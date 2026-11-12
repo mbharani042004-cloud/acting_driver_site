@@ -18,23 +18,23 @@ export default function CustomPack() {
           {/* ─── LOCAL TARIFF ─── */}
           <PixelCard
             variant="yellow"
-            colors={['#EAA428', '#F6B73C', '#FDE047', '#D97706', '#FFFFFF']}
+            colors={['#EAA428', '#CA8A04', '#D97706', '#F59E0B', '#FBBF24']}
             glowColor="#EAA428"
             shape="square"
             origin="center"
-            gap={6}
+            gap={7}
             pixelSize={2.5}
             speed={25}
             revealDuration={600}
-            spotlight={0.5}
-            glow={0.5}
-            opacity={0.38}
-            fade={0.65}
+            spotlight={0.45}
+            glow={0.35}
+            opacity={0.32}
+            fade={0.6}
             trigger="hover"
             radius={24}
             clickPulse
             intro
-            theme="dark"
+            theme="light"
             className={styles.pixelCard}
           >
             <div className={styles.cardHeader}>
@@ -88,24 +88,24 @@ export default function CustomPack() {
           {/* ─── OUTSTATION TARIFF ─── */}
           <PixelCard
             variant="yellow"
-            colors={['#EAA428', '#F6B73C', '#FDE047', '#D97706', '#FFFFFF']}
+            colors={['#EAA428', '#CA8A04', '#D97706', '#F59E0B', '#FBBF24']}
             glowColor="#EAA428"
             shape="square"
             origin="center"
-            gap={6}
+            gap={7}
             pixelSize={2.5}
             speed={25}
             revealDuration={600}
-            spotlight={0.5}
-            glow={0.5}
-            opacity={0.38}
-            fade={0.65}
+            spotlight={0.45}
+            glow={0.35}
+            opacity={0.32}
+            fade={0.6}
             trigger="hover"
             radius={24}
             clickPulse
             intro
             introDelay={180}
-            theme="dark"
+            theme="light"
             className={styles.pixelCard}
           >
             <div className={styles.cardHeader}>
