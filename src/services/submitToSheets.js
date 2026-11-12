@@ -29,8 +29,14 @@ async function postToSheet(sheet, data) {
 }
 
 export async function submitBookingRequest(data) {
+  const driverRequiredValue =
+    data.driverRequired === 'Other' && data.otherDuration
+      ? `Other: ${data.otherDuration}`
+      : data.driverRequired;
+
   return postToSheet('Booking', {
     ...data,
+    driverRequired: driverRequiredValue,
     transmission: Array.isArray(data.transmission) ? data.transmission.join(', ') : data.transmission,
     date: new Date().toLocaleDateString('en-IN'),
     status: 'Pending',

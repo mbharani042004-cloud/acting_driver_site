@@ -10,7 +10,7 @@ export default function BookingForm() {
     fullName: '', mobile: '', whatsapp: '', email: '',
     pickup: '', drop: '', pickupDate: '', pickupTime: '',
     tripType: '', foodFacility: '', stayFacility: '', vehicleType: '', vehicleModel: '',
-    transmission: [], driverRequired: '', returnDate: '', returnTime: '',
+    transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
     notes: '',
   });
 
@@ -244,7 +244,7 @@ export default function BookingForm() {
             <div className="form-group">
               <label>Driver Required For <span className="req">*</span></label>
               <div className="radio-group">
-                {['4 Hours', 'Full Day', 'Overnight', 'Outstation'].map((r) => (
+                {['Minimum 4 Hours', 'Full Day', 'Other'].map((r) => (
                   <label key={r} className="radio-option">
                     <input type="radio" name="driverRequired" value={r} checked={form.driverRequired === r} onChange={handleChange} required />
                     {r}
@@ -252,6 +252,20 @@ export default function BookingForm() {
                 ))}
               </div>
             </div>
+
+            {form.driverRequired === 'Other' && (
+              <div className="form-group">
+                <label>Specify Duration <span className="req">*</span></label>
+                <input
+                  type="text"
+                  name="otherDuration"
+                  value={form.otherDuration}
+                  onChange={handleChange}
+                  required
+                  placeholder="How many hours, days, or weeks? (e.g. 6 hours, 3 days, 1 week)"
+                />
+              </div>
+            )}
 
             <div className="form-group">
               <label>Special Requirements / Notes</label>
