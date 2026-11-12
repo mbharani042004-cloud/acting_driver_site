@@ -47,6 +47,10 @@ export default function BookingForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (form.transmission.length === 0) {
+      alert('Please select a transmission type.');
+      return;
+    }
     setLoading(true);
     try {
       const { submitBookingRequest } = await import('../services/submitToSheets');
@@ -154,12 +158,12 @@ export default function BookingForm() {
             {(form.tripType === 'Round Trip' || form.tripType === 'Outstation') && (
               <div className="form-row">
                 <div className="form-group">
-                  <label>Return Date</label>
-                  <input type="date" name="returnDate" value={form.returnDate} onChange={handleChange} />
+                  <label>Return Date <span className="req">*</span></label>
+                  <input type="date" name="returnDate" value={form.returnDate} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                  <label>Return Time</label>
-                  <input type="time" name="returnTime" value={form.returnTime} onChange={handleChange} />
+                  <label>Return Time <span className="req">*</span></label>
+                  <input type="time" name="returnTime" value={form.returnTime} onChange={handleChange} required />
                 </div>
               </div>
             )}
@@ -183,11 +187,18 @@ export default function BookingForm() {
             </div>
 
             <div className="form-group">
-              <label>Transmission</label>
+              <label>Transmission <span className="req">*</span></label>
               <div className="checkbox-group">
                 {['Manual', 'Automatic', 'Both'].map((t) => (
                   <label key={t} className="check-option">
-                    <input type="checkbox" name="transmission" value={t} checked={form.transmission.includes(t)} onChange={handleCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="transmission"
+                      value={t}
+                      checked={form.transmission.includes(t)}
+                      onChange={handleCheckbox}
+                      required={form.transmission.length === 0}
+                    />
                     {t}
                   </label>
                 ))}
@@ -195,8 +206,8 @@ export default function BookingForm() {
             </div>
 
             <div className="form-group">
-              <label>Vehicle Model</label>
-              <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} placeholder="e.g. Maruti Swift" />
+              <label>Vehicle Model <span className="req">*</span></label>
+              <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange} required placeholder="e.g. Maruti Swift" />
             </div>
 
             {/* Section 4 */}
