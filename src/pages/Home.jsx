@@ -157,7 +157,6 @@ export default function Home() {
             <div className="service-detail">
               <div className="service-detail-header">
                 <div className="service-header-info">
-                  <span className="service-category-pill">Verified Driver Service</span>
                   <h3 className="service-title">{active.title}</h3>
                   <p className="service-description">{active.desc}</p>
                 </div>
