@@ -9,7 +9,7 @@ export default function BookingForm() {
   const [form, setForm] = useState({
     fullName: '', mobile: '', whatsapp: '', email: '',
     pickup: '', drop: '', pickupDate: '', pickupTime: '',
-    tripType: '', subTripType: '', foodFacility: '', stayFacility: '', vehicleType: '', vehicleModel: '',
+    tripType: '', subTripType: '', vehicleType: '', vehicleModel: '',
     transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
     notes: '',
   });
@@ -187,32 +187,7 @@ export default function BookingForm() {
               </div>
             )}
 
-            {form.subTripType === 'Outstation' && (
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Food Facility <span className="req">*</span></label>
-                  <input
-                    type="text"
-                    name="foodFacility"
-                    value={form.foodFacility}
-                    onChange={handleChange}
-                    required
-                    placeholder="e.g. Provided by customer / Allowance"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Stay Facility <span className="req">*</span></label>
-                  <input
-                    type="text"
-                    name="stayFacility"
-                    value={form.stayFacility}
-                    onChange={handleChange}
-                    required
-                    placeholder="e.g. Hotel provided / Room arranged / Not applicable"
-                  />
-                </div>
-              </div>
-            )}
+
 
 
             {/* Section 3 */}
