@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PixelCard from '../components/PixelCard';
+import SpotlightCard from '../components/SpotlightCard';
 import styles from './CustomPack.module.css';
 
 export default function CustomPack() {
@@ -16,26 +16,17 @@ export default function CustomPack() {
 
         <div className={styles.grid}>
           {/* ─── LOCAL TARIFF ─── */}
-          <PixelCard
-            variant="yellow"
-            colors={['#EAA428', '#CA8A04', '#D97706', '#F59E0B', '#FBBF24']}
-            glowColor="#EAA428"
-            shape="square"
-            origin="center"
-            gap={7}
-            pixelSize={2.5}
-            speed={25}
-            revealDuration={600}
-            spotlight={0.45}
-            glow={0.35}
-            opacity={0.32}
-            fade={0.6}
-            trigger="hover"
-            radius={24}
-            clickPulse
-            intro
+          <SpotlightCard
             theme="light"
-            className={styles.pixelCard}
+            spotlightColor="rgba(234, 164, 40, 0.45)"
+            intensity={0.25}
+            spotlightSize={320}
+            softness={0.7}
+            borderGlow={0.8}
+            proximity={90}
+            smoothing={0.25}
+            flare
+            className={styles.spotlightCard}
           >
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
@@ -83,30 +74,20 @@ export default function CustomPack() {
                 Book a driver
               </Link>
             </div>
-          </PixelCard>
+          </SpotlightCard>
 
           {/* ─── OUTSTATION TARIFF ─── */}
-          <PixelCard
-            variant="yellow"
-            colors={['#EAA428', '#CA8A04', '#D97706', '#F59E0B', '#FBBF24']}
-            glowColor="#EAA428"
-            shape="square"
-            origin="center"
-            gap={7}
-            pixelSize={2.5}
-            speed={25}
-            revealDuration={600}
-            spotlight={0.45}
-            glow={0.35}
-            opacity={0.32}
-            fade={0.6}
-            trigger="hover"
-            radius={24}
-            clickPulse
-            intro
-            introDelay={180}
+          <SpotlightCard
             theme="light"
-            className={styles.pixelCard}
+            spotlightColor="rgba(234, 164, 40, 0.45)"
+            intensity={0.25}
+            spotlightSize={320}
+            softness={0.7}
+            borderGlow={0.8}
+            proximity={90}
+            smoothing={0.25}
+            flare
+            className={styles.spotlightCard}
           >
             <div className={styles.cardHeader}>
               <div className={styles.cardHeading}>
@@ -163,7 +144,7 @@ export default function CustomPack() {
                 Book outstation driver
               </Link>
             </div>
-          </PixelCard>
+          </SpotlightCard>
         </div>
       </div>
     </section>

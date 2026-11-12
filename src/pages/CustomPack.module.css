@@ -63,7 +63,7 @@
   align-items: start;
 }
 
-.pixelCard {
+.spotlightCard {
   position: relative;
   padding: 32px;
   display: flex;
@@ -71,77 +71,7 @@
   height: 100%;
 }
 
-.pixelCard .cardFooter {
-  margin-top: auto;
-}
-
-.pixelCard[data-theme='dark'] {
-  --text: #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-secondary: #CBD5E1;
-  --border-light: rgba(255, 255, 255, 0.09);
-  --border: rgba(234, 164, 40, 0.28);
-  --surface: rgba(255, 255, 255, 0.04);
-}
-
-.pixelCard[data-theme='dark'] .badge {
-  color: #EAA428;
-}
-
-.pixelCard[data-theme='dark'] .cardTag {
-  color: #94A3B8;
-}
-
-.pixelCard[data-theme='dark'] .price {
-  color: #FFFFFF;
-}
-
-.pixelCard[data-theme='dark'] .pricePill {
-  background: rgba(234, 164, 40, 0.12);
-  border-color: rgba(234, 164, 40, 0.35);
-  color: #EAA428;
-}
-
-.pixelCard[data-theme='dark'] .groupLabel {
-  color: #EAA428;
-  opacity: 0.95;
-}
-
-.pixelCard[data-theme='dark'] .row {
-  background: rgba(255, 255, 255, 0.035);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.pixelCard[data-theme='dark'] .row:hover {
-  border-color: rgba(234, 164, 40, 0.45);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.pixelCard[data-theme='dark'] .rowAccent {
-  background: rgba(234, 164, 40, 0.08);
-  border-color: rgba(234, 164, 40, 0.35);
-}
-
-.pixelCard[data-theme='dark'] .rowLabel {
-  color: #F8FAFC;
-}
-
-.pixelCard[data-theme='dark'] .rowValue {
-  color: #FFFFFF;
-}
-
-.pixelCard[data-theme='dark'] .rowMeta {
-  color: #94A3B8;
-}
-
-.pixelCard[data-theme='dark'] .note {
-  background: rgba(255, 255, 255, 0.03);
-  border-left-color: #EAA428;
-  color: #CBD5E1;
-}
-
-.pixelCard[data-theme='dark'] .cardFooter {
-  border-top-color: rgba(255, 255, 255, 0.08);
+.spotlightCard .cardFooter {
   margin-top: auto;
 }
 
