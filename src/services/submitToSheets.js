@@ -34,8 +34,13 @@ export async function submitBookingRequest(data) {
       ? `Other: ${data.otherDuration}`
       : data.driverRequired;
 
+  const tripTypeValue = data.subTripType
+    ? `${data.tripType} (${data.subTripType})`
+    : data.tripType;
+
   return postToSheet('Booking', {
     ...data,
+    tripType: tripTypeValue,
     driverRequired: driverRequiredValue,
     transmission: Array.isArray(data.transmission) ? data.transmission.join(', ') : data.transmission,
     date: new Date().toLocaleDateString('en-IN'),

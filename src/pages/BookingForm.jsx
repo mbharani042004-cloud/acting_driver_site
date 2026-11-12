@@ -9,7 +9,7 @@ export default function BookingForm() {
   const [form, setForm] = useState({
     fullName: '', mobile: '', whatsapp: '', email: '',
     pickup: '', drop: '', pickupDate: '', pickupTime: '',
-    tripType: '', foodFacility: '', stayFacility: '', vehicleType: '', vehicleModel: '',
+    tripType: '', subTripType: '', foodFacility: '', stayFacility: '', vehicleType: '', vehicleModel: '',
     transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
     notes: '',
   });
@@ -145,7 +145,7 @@ export default function BookingForm() {
             <div className="form-group">
               <label>Trip Type <span className="req">*</span></label>
               <div className="radio-group">
-                {['One Way', 'Round Trip', 'Local', 'Outstation'].map((t) => (
+                {['One Way', 'Round Trip'].map((t) => (
                   <label key={t} className="radio-option">
                     <input type="radio" name="tripType" value={t} checked={form.tripType === t} onChange={handleChange} required />
                     {t}
@@ -154,7 +154,27 @@ export default function BookingForm() {
               </div>
             </div>
 
-            {(form.tripType === 'Round Trip' || form.tripType === 'Outstation') && (
+            {form.tripType && (
+              <div className="form-group" style={{ marginTop: '12px' }}>
+                <div className="radio-group">
+                  {['Local', 'Outstation'].map((st) => (
+                    <label key={st} className="radio-option">
+                      <input
+                        type="radio"
+                        name="subTripType"
+                        value={st}
+                        checked={form.subTripType === st}
+                        onChange={handleChange}
+                        required
+                      />
+                      {st}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {form.tripType === 'Round Trip' && (
               <div className="form-row">
                 <div className="form-group">
                   <label>Return Date <span className="req">*</span></label>
@@ -167,7 +187,7 @@ export default function BookingForm() {
               </div>
             )}
 
-            {form.tripType === 'Outstation' && (
+            {form.subTripType === 'Outstation' && (
               <div className="form-row">
                 <div className="form-group">
                   <label>Food Facility <span className="req">*</span></label>
