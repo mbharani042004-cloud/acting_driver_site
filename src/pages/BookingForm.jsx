@@ -3,16 +3,19 @@ import { useState } from 'react';
 const MAX_ADDRESS_WORDS = 100;
 const countWords = (text) => (text.trim() ? text.trim().split(/\s+/).length : 0);
 
+const INITIAL_FORM = {
+  fullName: '', mobile: '', whatsapp: '', email: '',
+  pickup: '', drop: '', pickupDate: '', pickupTime: '',
+  tripType: '', subTripType: '', vehicleType: '', vehicleModel: '',
+  transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
+  notes: '',
+};
+
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    fullName: '', mobile: '', whatsapp: '', email: '',
-    pickup: '', drop: '', pickupDate: '', pickupTime: '',
-    tripType: '', subTripType: '', vehicleType: '', vehicleModel: '',
-    transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
-    notes: '',
-  });
+  const [confirmedBooking, setConfirmedBooking] = useState(null);
+  const [form, setForm] = useState(INITIAL_FORM);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,25 +60,14 @@ export default function BookingForm() {
       await submitBookingRequest(form);
     } catch { }
     setLoading(false);
+    setConfirmedBooking({ ...form });
     setSubmitted(true);
   };
 
-  if (submitted) {
-    return (
-      <div className="form-page">
-        <div className="form-wrapper">
-          <div className="form-card">
-            <div className="success-view">
-              <div className="success-icon">&#10003;</div>
-              <h2>Booking Submitted!</h2>
-              <p>Thank you for your booking request. Our team will contact you shortly to confirm your driver details.</p>
-              <a href="/" className="btn btn-primary btn-lg">Back to Home</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const handleReset = () => {
+    setForm(INITIAL_FORM);
+    setSubmitted(false);
+  };
 
   return (
     <div className="form-page">
@@ -281,6 +273,74 @@ export default function BookingForm() {
           </form>
         </div>
       </div>
+
+      {submitted && (
+        <div className="modal-overlay" onClick={() => setSubmitted(false)}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="modal-close-btn"
+              onClick={() => setSubmitted(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            <div className="modal-success-icon">&#10003;</div>
+            <h2>Booking Submitted!</h2>
+            <p className="modal-desc">
+              {confirmedBooking?.fullName ? `Thank you, ${confirmedBooking.fullName}! ` : ''}
+              Our team will contact you shortly to confirm your driver details.
+            </p>
+
+            {confirmedBooking && (
+              <div className="modal-summary">
+                <div className="modal-summary-row">
+                  <span className="modal-summary-label">Trip Type</span>
+                  <span className="modal-summary-value">
+                    {confirmedBooking.tripType} {confirmedBooking.subTripType ? `(${confirmedBooking.subTripType})` : ''}
+                  </span>
+                </div>
+                <div className="modal-summary-row">
+                  <span className="modal-summary-label">Pickup Schedule</span>
+                  <span className="modal-summary-value">
+                    {confirmedBooking.pickupDate} {confirmedBooking.pickupTime ? `at ${confirmedBooking.pickupTime}` : ''}
+                  </span>
+                </div>
+                {confirmedBooking.mobile && (
+                  <div className="modal-summary-row">
+                    <span className="modal-summary-label">Mobile</span>
+                    <span className="modal-summary-value">{confirmedBooking.mobile}</span>
+                  </div>
+                )}
+                {confirmedBooking.driverRequired && (
+                  <div className="modal-summary-row">
+                    <span className="modal-summary-label">Duration</span>
+                    <span className="modal-summary-value">
+                      {confirmedBooking.driverRequired === 'Other' && confirmedBooking.otherDuration
+                        ? confirmedBooking.otherDuration
+                        : confirmedBooking.driverRequired}
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div className="modal-actions">
+              <a href="/" className="btn btn-primary btn-lg">
+                Back to Home
+              </a>
+              <button
+                type="button"
+                className="modal-secondary-btn"
+                onClick={handleReset}
+              >
+                Book Another Driver
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
