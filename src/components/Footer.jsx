@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import logoImg from '../assets/logo.png';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <img src={logoImg} alt="Ottuner" className="footer-logo-img" />
+          <Link to="/" style={{ textDecoration: 'none' }} aria-label="Ottuner Home">
+            <Logo variant="footer" />
+          </Link>
           <p>Verified professional drivers, available around the clock. Airport transfers, outstation trips, daily commutes, and night drives across India.</p>
         </div>
         <div className="footer-col">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoImg from '../assets/logo.png';
+import Logo from './Logo';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -18,8 +18,8 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="nav-inner">
-        <Link to="/" className="navbar-logo">
-          <img src={logoImg} alt="Ottuner" className="logo-img" />
+        <Link to="/" className="navbar-logo" aria-label="Ottuner Home">
+          <Logo variant="navbar" />
         </Link>
         <button className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)} aria-label="Menu">
           <span /><span /><span />
