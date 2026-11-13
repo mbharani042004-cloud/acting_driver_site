@@ -39,6 +39,7 @@ export async function submitBookingRequest(data) {
     : data.tripType;
 
   return postToSheet('Booking', {
+    hp_field: data.hp_field || '',
     date: new Date().toLocaleDateString('en-IN'),
     status: 'Pending',
     fullName: data.fullName || '',
@@ -78,6 +79,7 @@ export async function submitAgencyApplication(form) {
 
   const payload = {
     ...rest,
+    hp_field: form.hp_field || '',
     services: Array.isArray(rest.services) ? rest.services.join(', ') : rest.services,
     licence: '',
     licenceName: licence?.name || '',

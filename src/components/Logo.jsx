@@ -18,3 +18,4 @@ export default function Logo({ variant = 'navbar', className = '' }) {
     </div>
   );
 }
+

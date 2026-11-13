@@ -46,6 +46,11 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
 
+    // Honeypot check: silently filter automated spam bots
+    if (data.hp_field) {
+      return json({ ok: true, filtered: true });
+    }
+
     // 1) Upload the driving licence to Drive → replace with a viewable link.
     //    Must happen BEFORE the header row is built, so the base64 never
     //    ends up as a column in your sheet.
@@ -138,11 +143,25 @@ function authorizeDrive() {
   DriveApp.getFoldersByName(LICENCE_FOLDER);
 }
 
+var ALLOWED_LICENCE_MIMES = [
+  'image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'application/pdf'
+];
+var MAX_LICENCE_BYTES = 5 * 1024 * 1024;
+
 /** Saves the uploaded file to Google Drive and returns its link. */
 function saveLicence_(base64, name, mime) {
-  var folder = getFolder_(LICENCE_FOLDER);
+  var cleanMime = String(mime || '').toLowerCase().trim();
+  if (ALLOWED_LICENCE_MIMES.indexOf(cleanMime) === -1) {
+    throw new Error('Unsupported or disallowed file type: ' + cleanMime);
+  }
+
   var bytes = Utilities.base64Decode(base64);
-  var blob = Utilities.newBlob(bytes, mime || 'application/octet-stream', safeName_(name));
+  if (bytes.length > MAX_LICENCE_BYTES) {
+    throw new Error('Licence file exceeds the 5 MB size limit');
+  }
+
+  var folder = getFolder_(LICENCE_FOLDER);
+  var blob = Utilities.newBlob(bytes, cleanMime, safeName_(name));
   var file = folder.createFile(blob);
   return file.getUrl();
 }
@@ -159,9 +178,15 @@ function safeName_(name) {
 
 function toCell(value) {
   if (value === undefined || value === null) return '';
-  if (Array.isArray(value)) return value.join(', ');
-  if (typeof value === 'object') return JSON.stringify(value);
-  return value;
+  if (Array.isArray(value)) value = value.join(', ');
+  if (typeof value === 'object') value = JSON.stringify(value);
+
+  var str = String(value);
+  // Protect against Spreadsheet Formula Injection (=, +, -, @)
+  if (/^[=\+\-@]/.test(str)) {
+    return "'" + str;
+  }
+  return str;
 }
 
 function json(obj) {

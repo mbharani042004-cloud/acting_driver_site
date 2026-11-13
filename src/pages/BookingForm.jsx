@@ -8,7 +8,7 @@ const INITIAL_FORM = {
   pickup: '', drop: '', pickupDate: '', pickupTime: '',
   tripType: '', subTripType: '', vehicleType: '', vehicleModel: '',
   transmission: [], driverRequired: '', otherDuration: '', returnDate: '', returnTime: '',
-  notes: '',
+  notes: '', hp_field: '',
 };
 
 export default function BookingForm() {
@@ -79,6 +79,18 @@ export default function BookingForm() {
           </div>
 
           <form onSubmit={handleSubmit}>
+            {/* Anti-bot honeypot */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <input
+                type="text"
+                name="hp_field"
+                value={form.hp_field}
+                onChange={handleChange}
+                tabIndex="-1"
+                autoComplete="off"
+              />
+            </div>
+
             {/* Section 1 */}
             <div className="form-section-label">
               <span className="num">1</span> Your Details

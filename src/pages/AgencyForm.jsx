@@ -6,6 +6,7 @@ export default function AgencyForm() {
   const [form, setForm] = useState({
     fullName: '', mobile: '', email: '', city: '',
     experience: '', services: [], licence: null, about: '', terms: false,
+    hp_field: '',
   });
 
   const handleChange = (e) => {
@@ -15,7 +16,13 @@ export default function AgencyForm() {
     } else if (type === 'checkbox') {
       setForm((p) => ({ ...p, [name]: checked }));
     } else if (type === 'file') {
-      setForm((p) => ({ ...p, [name]: files[0] }));
+      const file = files[0];
+      if (file && file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5 MB. Please select a smaller image or PDF.');
+        e.target.value = '';
+        return;
+      }
+      setForm((p) => ({ ...p, [name]: file }));
     } else {
       setForm((p) => ({ ...p, [name]: value }));
     }
@@ -64,6 +71,18 @@ export default function AgencyForm() {
           </div>
 
           <form onSubmit={handleSubmit}>
+            {/* Anti-bot honeypot */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <input
+                type="text"
+                name="hp_field"
+                value={form.hp_field}
+                onChange={handleChange}
+                tabIndex="-1"
+                autoComplete="off"
+              />
+            </div>
+
             {/* Section 1 */}
             <div className="form-section-label">
               <span className="num">1</span> Personal Details
