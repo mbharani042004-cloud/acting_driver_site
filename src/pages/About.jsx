@@ -68,11 +68,11 @@ export default function About() {
               </div>
               <div className="driver-stats">
                 <div className="driver-stat">
-                  <div className="driver-stat-num">5</div>
-                  <div className="driver-stat-label">Years</div>
+                  <div className="driver-stat-num">6</div>
+                  <div className="driver-stat-label">month</div>
                 </div>
                 <div className="driver-stat">
-                  <div className="driver-stat-num">1,240</div>
+                  <div className="driver-stat-num">150</div>
                   <div className="driver-stat-label">Trips</div>
                 </div>
                 <div className="driver-stat">
@@ -82,7 +82,7 @@ export default function About() {
               </div>
               <div className="driver-id-footer">
                 <span>Ottuner verified driver</span>
-                <span className="id-badge">OD-4821</span>
+
               </div>
             </div>
             <div className="driver-id-card" style={{ maxWidth: '100%', marginTop: '16px' }}>
@@ -90,16 +90,16 @@ export default function About() {
                 <div className="driver-avatar">&#128100;</div>
                 <div className="driver-info">
                   <h4>Suresh Murugan <span className="verified-badge">&#10003;</span></h4>
-                  <p>Coimbatore</p>
+                  <p>Chennai</p>
                 </div>
               </div>
               <div className="driver-stats">
                 <div className="driver-stat">
-                  <div className="driver-stat-num">6</div>
+                  <div className="driver-stat-num">1</div>
                   <div className="driver-stat-label">Years</div>
                 </div>
                 <div className="driver-stat">
-                  <div className="driver-stat-num">890</div>
+                  <div className="driver-stat-num">50</div>
                   <div className="driver-stat-label">Trips</div>
                 </div>
                 <div className="driver-stat">
