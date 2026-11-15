@@ -1062,6 +1062,26 @@ input, select, textarea { font-family: inherit; font-size: 0.95rem; }
   font-size: 0.95rem;
 }
 
+.btn-whatsapp {
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700 !important;
+  border: 1px solid #20BA5A !important;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-whatsapp:hover {
+  background: #20BA5A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  transform: translateY(-1px);
+}
+
 .modal-secondary-btn {
   background: transparent;
   border: 1px solid #cbd5e1;
