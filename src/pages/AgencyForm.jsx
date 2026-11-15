@@ -5,24 +5,16 @@ export default function AgencyForm() {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     fullName: '', mobile: '', email: '', city: '',
-    experience: '', services: [], licence: null, about: '', terms: false,
+    experience: '', services: [], about: '', terms: false,
     hp_field: '',
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
+    const { name, value, type, checked } = e.target;
     if (type === 'checkbox' && name === 'services') {
       setForm((p) => ({ ...p, services: checked ? [...p.services, value] : p.services.filter((s) => s !== value) }));
     } else if (type === 'checkbox') {
       setForm((p) => ({ ...p, [name]: checked }));
-    } else if (type === 'file') {
-      const file = files[0];
-      if (file && file.size > 5 * 1024 * 1024) {
-        alert('File size exceeds 5 MB. Please select a smaller image or PDF.');
-        e.target.value = '';
-        return;
-      }
-      setForm((p) => ({ ...p, [name]: file }));
     } else {
       setForm((p) => ({ ...p, [name]: value }));
     }
@@ -135,20 +127,6 @@ export default function AgencyForm() {
             <div className="form-group">
               <label>About Yourself</label>
               <textarea name="about" value={form.about} onChange={handleChange} placeholder="Tell us about your driving experience, areas you cover, etc." rows="3" />
-            </div>
-
-            {/* Section 3 */}
-            <div className="form-section-label">
-              <span className="num">3</span> Driving Licence
-            </div>
-
-            <div className="form-group">
-              <label>Upload Driving Licence <span className="req">*</span></label>
-              <div className="file-upload-area">
-                <input type="file" name="licence" onChange={handleChange} accept=".pdf,.jpg,.jpeg,.png" required />
-                <div className="upload-icon">&#128196;</div>
-                <p>{form.licence ? <span className="filename">{form.licence.name}</span> : 'Click to upload your driving licence (PDF, JPG, PNG)'}</p>
-              </div>
             </div>
 
             <div className="terms-group">
