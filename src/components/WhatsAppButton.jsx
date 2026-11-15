@@ -2,8 +2,24 @@ import './WhatsAppButton.css';
 
 export default function WhatsAppButton() {
   const phone = '918508646426';
-  const defaultMessage = encodeURIComponent('Hello Ottuner, I would like to book a driver.');
-  const whatsappUrl = `https://wa.me/${phone}?text=${defaultMessage}`;
+  const pollMessage = [
+    '👋 *Hello Ottuner! I want to book a driver.*',
+    '',
+    '📊 *Select Service (Reply with number):*',
+    '1️⃣ Local City Drive (4 Hrs / Full Day)',
+    '2️⃣ Outstation Journey (One-Way / Round-Trip)',
+    '3️⃣ Airport Pickup / Drop',
+    '4️⃣ Night Drive / Emergency Hire',
+    '',
+    '📝 *My Trip Details:*',
+    '• *Name:* ',
+    '• *Pickup Area:* ',
+    '• *Drop Area:* ',
+    '• *Date & Time:* ',
+    '• *Car Model (Manual / Auto):* ',
+  ].join('\n');
+
+  const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(pollMessage)}`;
 
   return (
     <aside aria-label="WhatsApp quick chat" className="whatsapp-floating-container">
