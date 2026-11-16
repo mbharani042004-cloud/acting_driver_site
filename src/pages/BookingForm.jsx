@@ -6,7 +6,7 @@ const countWords = (text) => (text.trim() ? text.trim().split(/\s+/).length : 0)
 const INITIAL_FORM = {
   fullName: '', mobile: '',
   pickup: '', drop: '', pickupDate: '', pickupTime: '',
-  tripType: '', subTripType: '', returnDate: '',
+  tripType: '', returnDate: '',
   transmission: [],
   notes: '', hp_field: '',
 };
@@ -14,9 +14,7 @@ const INITIAL_FORM = {
 function generateWhatsAppBookingUrl(booking) {
   if (!booking) return 'https://wa.me/918508646426';
   const phone = '918508646426';
-  const tripTypeFull = booking.subTripType
-    ? `${booking.tripType} (${booking.subTripType})`
-    : (booking.tripType || 'Standard');
+  const tripTypeFull = booking.tripType || 'Standard';
 
   const lines = [
     `*🚗 New Driver Booking - Ottuner*`,
@@ -187,26 +185,6 @@ export default function BookingForm() {
               </div>
             </div>
 
-            {form.tripType && (
-              <div className="form-group" style={{ marginTop: '12px' }}>
-                <div className="radio-group">
-                  {['Local', 'Outstation'].map((st) => (
-                    <label key={st} className="radio-option">
-                      <input
-                        type="radio"
-                        name="subTripType"
-                        value={st}
-                        checked={form.subTripType === st}
-                        onChange={handleChange}
-                        required
-                      />
-                      {st}
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {form.tripType === 'Round Trip' && (
               <div className="form-group">
                 <label>Return Date <span className="req">*</span></label>
@@ -281,9 +259,7 @@ export default function BookingForm() {
               <div className="modal-summary">
                 <div className="modal-summary-row">
                   <span className="modal-summary-label">Trip Type</span>
-                  <span className="modal-summary-value">
-                    {confirmedBooking.tripType} {confirmedBooking.subTripType ? `(${confirmedBooking.subTripType})` : ''}
-                  </span>
+                  <span className="modal-summary-value">{confirmedBooking.tripType}</span>
                 </div>
                 <div className="modal-summary-row">
                   <span className="modal-summary-label">Pickup Schedule</span>
